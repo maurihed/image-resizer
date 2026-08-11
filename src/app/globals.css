@@ -1,26 +1,80 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0b0d10;
+  --foreground: #e8eaed;
+  --panel: #141820;
+  --panel-elevated: #1a2030;
+  --border: #2a3344;
+  --muted: #8b95a8;
+  --accent: #2dd4bf;
+  --accent-hover: #5eead4;
+  --accent-muted: rgba(45, 212, 191, 0.15);
+  --danger: #f87171;
+  --danger-muted: rgba(248, 113, 113, 0.15);
+  --success: #4ade80;
+  --canvas-grid-a: #1a1f2a;
+  --canvas-grid-b: #12161e;
+  --ring: rgba(45, 212, 191, 0.45);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-panel: var(--panel);
+  --color-panel-elevated: var(--panel-elevated);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-muted: var(--accent-muted);
+  --color-danger: var(--danger);
+  --color-danger-muted: var(--danger-muted);
+  --color-success: var(--success);
+  --color-ring: var(--ring);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--accent-muted);
+  color: var(--foreground);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.checkerboard {
+  background-color: var(--canvas-grid-a);
+  background-image: linear-gradient(
+      45deg,
+      var(--canvas-grid-b) 25%,
+      transparent 25%
+    ),
+    linear-gradient(-45deg, var(--canvas-grid-b) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--canvas-grid-b) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--canvas-grid-b) 75%);
+  background-size: 16px 16px;
+  background-position:
+    0 0,
+    0 8px,
+    8px -8px,
+    -8px 0;
 }
